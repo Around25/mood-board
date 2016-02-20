@@ -38,7 +38,7 @@ class Board
     }
     public function getUsers()
     {
-        return $this->access_token;
+        return $this->users;
     }
     
     public function setName($name)
