@@ -1,44 +1,314 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
-</div>
+<section>
+        <div class="row masonry-container container-fluid">
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1453974336165-b5c58464f1ed?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=12d0ef05e407b1c9c85ad9875ece1a13" alt="">
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">5 likes</span>
+                </div>
+            </div><!--/.item  -->
 
-<div class="row">
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1453857122308-5e78881d7acc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=c02cc68e848cc645bd95d69c58e0df0b" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">5 likes</span>
+                </div>
+            </div><!--/.item  -->
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
-            </div>
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1452475168325-672188dc4dc3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=90ac1d6a1647efae8f2e547893d8cdec" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">12 likes</span>
+                </div>
+                <div class="caption comment">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1438979315413-de5df30042a1?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=f4e447e4fd3f59f41f8bf68e17f3d895" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">12 likes</span>
+                </div>
+                <div class="caption comment">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1430329429612-babb42f88673?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1d30718749dca5ea5ca3351fedeb8f64" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">12 likes</span>
+                </div>
+                <div class="caption comment">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1453974336165-b5c58464f1ed?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=12d0ef05e407b1c9c85ad9875ece1a13" alt="">
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">5 likes</span>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1427435150519-42d9bcd0aa81?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1896a40b338ccfb0d8ff7e5199e5ecd2" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">12 likes</span>
+                </div>
+                <div class="caption comment">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1453974336165-b5c58464f1ed?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=12d0ef05e407b1c9c85ad9875ece1a13" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">5 likes</span>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1430329429612-babb42f88673?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1d30718749dca5ea5ca3351fedeb8f64" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">12 likes</span>
+                </div>
+                <div class="caption comment">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1430329429612-babb42f88673?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1d30718749dca5ea5ca3351fedeb8f64" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">12 likes</span>
+                </div>
+                <div class="caption comment">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1430329429612-babb42f88673?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1d30718749dca5ea5ca3351fedeb8f64" alt="">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">12 likes</span>
+                </div>
+                <div class="caption comment">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <div class="close-icon">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1430329429612-babb42f88673?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=1d30718749dca5ea5ca3351fedeb8f64" alt="">
+                    <div class="overlay"></div>
+                    <button class="like-button">
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <span class="likes">5 likes</span>
+                </div>
+            </div><!--/.item  -->
         </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
-            </div>
+        <div class="container-fluid user-feed" id="stefan">
+            <p>Stefan</p>
+            <span>5 items</span>
         </div>
-    </div>
+        <div class="row masonry-container">
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
+            </div><!--/.item  -->
+
+            <div class="col-md-3 col-sm-6 item">
+                <div class="thumbnail">
+                    <img src="http://lorempixel.com/200/200/abstract" alt="">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    </div>
+                </div>
             </div>
+
         </div>
-    </div>
-</div>
+    </section>
