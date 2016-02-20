@@ -17,7 +17,15 @@
                         ->prependStylesheet($this->basePath('css/font-awesome.min.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
 
-
+    <!-- Scripts -->
+ +        <?php echo $this->headScript()
+ +            ->prependFile($this->basePath('js/bootstrap.min.js'))
+ +            ->prependFile($this->basePath('js/jquery.min.js'))
+              ->prependFile($this->basePath('js/creative.js'))
+              ->prependFile($this->basePath('js/classie.js'))
+ +          
+ +        ; ?>
+ 
     <!-- Custom Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
