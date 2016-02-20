@@ -11,6 +11,7 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Application\Entity\Board;
 
 class IndexController extends AbstractActionController
 {
@@ -19,13 +20,20 @@ class IndexController extends AbstractActionController
     public function getEntityManager()
     {
         if (null === $this->em) {
-            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+            $this->em = $this->getServiceLocator()
+                ->get('Doctrine\ORM\EntityManager');
         }
         return $this->em;
     }
 
     public function indexAction()
     {
+        $board = new Board();
+        $board->setName('test');
+        $this->getEntityManager();
+        $this->em->persist($board);
+        $this->em->flush();
+        
         return new ViewModel();
     }
 }

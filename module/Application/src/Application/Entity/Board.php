@@ -1,22 +1,26 @@
 <?php
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- *  @Entity @Table(name="board")
+ *  @ORM\Entity @ORM\Table(name="board")
  **/
 class Board
 {
 
     /**
      * @var integer $id
-     * @Id @Column(type="integer")
-     * @GeneratedValue(strategy="AUTO")
+     * @ORM\Id @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
-    /** @Column(type="string") */
+    /** @ORM\Column(type="string") */
     private $name;
 
     /**
-     * @OneToMany(targetEntity="User", mappedBy="board")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="board")
      **/
     private $users;
 
