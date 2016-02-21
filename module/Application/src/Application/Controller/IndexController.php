@@ -67,15 +67,16 @@ class IndexController extends AbstractActionController
         
         //get user form container
         $user = $container->user;
+        $showLogin = false;
         if (empty($user)){
-            //show user form;
+            $showLogin = true;
         } else if (!$boardService->checkUserOnBoard($board, $user)) {
             //add user on board
         }
         
-        $users = $board->getUsers();
-        $firsUserImages = $users[0]->getImages();
-        return new ViewModel();
+        return new ViewModel(array(
+            'showLogin' => $showLogin
+        ));
     }
     
     public function setUserAction()

@@ -1,3 +1,22 @@
+<div class="name-overlay <?php if ($this->showLogin) { echo 'show'; } ?>">
+    <i class="close-icon fa fa-times"></i>
+    <div class="box">
+        <div class="upload-content">
+            <h3>What is your name?</h3>
+            <span>Let your collaborators know who you are</span>
+            <form action="/set-user">
+                <input type="text" name="fname" placeholder="The Oscar goes to..." autofocus="true" style="   font-size: 110px;
+    /* padding: 100px 400px; */
+    background-color: transparent;
+    height: 200px;
+    font-weight: 600;
+    width: 1200px;
+    color: white;">
+            </form>
+            <button class="btn btn-secondary" id="send-name">OK! Let's go</button>
+        </div>
+    </div>
+</div>
 <section>
     <form action="/upload" class="dropzone"></form>
     <div class="row masonry-container container-fluid">
@@ -8,7 +27,7 @@
                 </div>
                 <img src="http://lorempixel.com/900/600/" alt="">
                 <div class="overlay"></div>
-                <button class="like-button">
+                <button class="like-button" image-id="4">
                     <i class="fa fa-thumbs-up"></i>
                 </button>
                 <span class="likes">5 likes</span>
