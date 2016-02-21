@@ -1,32 +1,21 @@
 <?php
-namespace Application\Entity;
+namespace Application\Db\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- *  @ORM\Entity @ORM\Table(name="board")
- **/
 class Board
 {
-
-    /**
-     * @var integer $id
-     * @ORM\Id @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+    
     private $id;
-
-    /** @ORM\Column(type="string") */
+    
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="board")
-     **/
     private $users;
 
     public function __construct()
     {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new ArrayCollection();
     }
     
     /**

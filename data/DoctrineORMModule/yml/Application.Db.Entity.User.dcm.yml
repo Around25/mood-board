@@ -1,0 +1,38 @@
+Application\Db\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: Application\Db\Model\User
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+        
+    manyToOne:
+        board:
+            targetEntity: Application\Db\Entity\Board
+            cascade: {  }
+            mappedBy: null
+            inversedBy: users
+            joinColumns:
+                board_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+            
+    oneToMany:
+        images:
+            targetEntity: Application\Db\Entity\Image
+            mappedBy: user
+            cascade: [remove, persist]
+            orderBy:
+              name: ASC
+
+    lifecycleCallbacks: {  }
