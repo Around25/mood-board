@@ -13,6 +13,14 @@ class User
     private $board;
     
     private $images;
+    
+    private $likes;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+        $this->likes = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -29,6 +37,10 @@ class User
     {
         return $this->images;
     }
+    public function getLikes()
+    {
+        return $this->likes;
+    }
 
     public function setName($name)
     {
@@ -41,6 +53,10 @@ class User
     public function setImages($images)
     {
         $this->images = $images;
+    }
+    public function setLikes($likes)
+    {
+        $this->likes = $likes;
     }
 
     /**

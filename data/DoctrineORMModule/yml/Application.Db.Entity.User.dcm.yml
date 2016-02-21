@@ -26,7 +26,6 @@ Application\Db\Entity\User:
                 board_id:
                     referencedColumnName: id
             orphanRemoval: false
-            
     oneToMany:
         images:
             targetEntity: Application\Db\Entity\Image
@@ -34,5 +33,11 @@ Application\Db\Entity\User:
             cascade: [remove, persist]
             orderBy:
               name: ASC
+        likes:
+            targetEntity: Application\Db\Entity\Like
+            mappedBy: user
+            cascade: [remove, persist]
+            orderBy:
+              id: ASC
 
     lifecycleCallbacks: {  }

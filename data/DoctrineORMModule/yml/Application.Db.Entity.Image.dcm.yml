@@ -21,8 +21,15 @@ Application\Db\Entity\Image:
             targetEntity: Application\Db\Entity\User
             cascade: {  }
             mappedBy: null
-            inversedBy: files
+            inversedBy: images
             joinColumns:
                 user_id:
                     referencedColumnName: id
             orphanRemoval: false
+    oneToMany:
+        likes:
+            targetEntity: Application\Db\Entity\Like
+            mappedBy: image
+            cascade: [remove, persist]
+            orderBy:
+                id: ASC
