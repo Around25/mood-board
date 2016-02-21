@@ -327,19 +327,17 @@
         }
     });
     
+    //prevent default on enter keyup
+    $("input[name='fname']").keyup(function (e) {
+        e.preventDefault();
+        if (e.keyCode == 13) {
+            setUser($(this).val());
+        }
+    });
+    
     $('#send-name').click(function(e) {
         e.preventDefault();
-        var name = $('input[name="fname"]').val();
-        $.ajax({
-            url: '/set-user/' + name,
-            success: function (data) {
-                if (data.success) {
-                    $('.name-overlay').removeClass('show');
-                } else {
-//                    window.location.replace(data.url);
-                }
-            }
-        });
+        setUser($('input[name="fname"]').val());
     })
     
     $('.like-button').click(function() {
@@ -359,6 +357,19 @@
     $('.browse-files').click(function(e) {
         e.preventDefault();
     })
+    
+    function setUser(name) {
+        $.ajax({
+            url: '/set-user/' + name,
+            success: function (data) {
+                if (data.success) {
+                    $('.name-overlay').removeClass('show');
+                } else {
+//                    window.location.replace(data.url);
+                }
+            }
+        });
+    }
 </script>
 
 

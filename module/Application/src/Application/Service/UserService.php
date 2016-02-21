@@ -13,13 +13,8 @@ class UserService extends AbstractService
      */
     public function getById($id)
     {
-        try{
-            $item = $this->getRepository('Application\Db\Entity\User')->find($id);
-        } catch (\Exception $e){
-            var_dump($e->getMessage());exit;
-        }
-
-        return $this->checkObject($item);
+        $result = $this->getRepository('Application\Db\Entity\User')->find($id);
+        return isset($result) ? $this->checkObject($result) : false;
     }
 
     /**
