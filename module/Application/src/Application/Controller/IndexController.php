@@ -49,6 +49,7 @@ class IndexController extends AbstractActionController
             return $this->redirect()->toRoute('board', array('name' => $this->getBoardNewName()));
         }
         $boardService = $this->getService('Application\Service\BoardService');
+        $userService = $this->getService('Application\Service\UserService');
         
         //get board
         
@@ -66,7 +67,7 @@ class IndexController extends AbstractActionController
         }
         
         //get user form container
-        $user = $container->user;
+        $user = $userService->getById($container->userId);
         $showLogin = false;
         if (empty($user)){
             $showLogin = true;
@@ -85,13 +86,13 @@ class IndexController extends AbstractActionController
         $boardService = $this->getService('Application\Service\BoardService');
         $container = new Container('board');
         $board = $boardService->getById($container->boardId);
-        $result['succes'] = false;
+        $result['success'] = false;
         if(empty($board)) {
             $result['url'] = 'board/' . $this->getBoardNewName();
             return new JsonModel($result);
         }
         if (empty($name)) {
-            $result['url'] = 'board/' . $container->board->getName();
+            $result['url'] = 'board/' . $board->getName();
             return new JsonModel($result);
         }
         try {
@@ -99,7 +100,7 @@ class IndexController extends AbstractActionController
             $user = $userService->create($name);
             $userService->setUserSBoard($user, $board);
             $container->userId = $user->getId();
-            $result['succes'] = true;
+            $result['success'] = true;
             return new JsonModel($result);
             
         } catch (\Exception $e) {
@@ -115,7 +116,7 @@ class IndexController extends AbstractActionController
             $result['url'] = 'board/' . $this->getBoardNewName();
             return new JsonModel($result);
         }
-        $result['succes'] = false;
+        $result['success'] = false;
         if (empty($container->userId)) {
             $result['url'] = 'board/' . $container->board->getName();
             return new JsonModel($result);
