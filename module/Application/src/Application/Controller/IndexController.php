@@ -74,6 +74,7 @@ class IndexController extends AbstractActionController
         }
         
         $users = $board->getUsers();
+        $firsUserImages = $users[0]->getImages();
         return new ViewModel();
     }
     
@@ -107,6 +108,18 @@ class IndexController extends AbstractActionController
     }
     
     public function uploadAction() {
+
+        $container = new Container('board');
+        if(empty($container->boardId)) {
+            $result['url'] = 'board/' . $this->getBoardNewName();
+            return new JsonModel($result);
+        }
+        $result['succes'] = false;
+        if (empty($container->userId)) {
+            $result['url'] = 'board/' . $container->board->getName();
+            return new JsonModel($result);
+        }
+        
         $file = $this->getRequest()->getFiles('file');
         $result = array();
         
@@ -119,10 +132,16 @@ class IndexController extends AbstractActionController
         ));
         try {
             $path = $upload->process($file);
+            
+            $imageService = $this->getService('Application\Service\ImageService');
+            $userService = $this->getService('Application\Service\UserService');
+            $image = $imageService->create($path);
+            $user = $userService->getById($container->userId);
+            $imageService->addImageSUser($image, $user);
+            
             $result['success'] = true;
             $result['path'] = $path;
         } catch (\Exception $e) {
-            $result['success'] = false;
             $result['message'] = $e->getMessage();
         }
         return new JsonModel($result);

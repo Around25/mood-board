@@ -80,7 +80,8 @@ return array(
         ),
         'invokables' => array(
             'Application\Service\BoardService' => 'Application\Service\BoardService',
-            'Application\Service\UserService' => 'Application\Service\UserService'
+            'Application\Service\UserService' => 'Application\Service\UserService',
+            'Application\Service\ImageService' => 'Application\Service\ImageService'
         )
     ),
     'translator' => array(
