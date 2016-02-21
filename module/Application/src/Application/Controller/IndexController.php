@@ -67,7 +67,7 @@ class IndexController extends AbstractActionController
         }
         
         //get user form container
-        $user = $userService->getById($container->userId);
+        $user = empty($container->boardId) ? null : $userService->getById($container->userId);
         $showLogin = false;
         if (empty($user)){
             $showLogin = true;
