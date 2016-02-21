@@ -53,7 +53,7 @@
 <body class="landing">
 <ul class="shots"></ul>
 <div class="overlay"></div>
-<div class="demo-box box carousel slide" id="myCarousel" data-ride="carousel" data-interval="false">
+<div class="demo-box box carousel slide" id="myCarousel" data-ride="carousel" data-interval="false" >
     <div class="onboarding">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -67,7 +67,7 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <div class="icon">
-                    <img src="<?php echo $this->basePath('img/icon-logo.svg') ?>" height="99" width="90">
+                    <img src="img/icon-logo.svg" height="99" width="90">
                 </div>
                 <h4>Welcome to Moodbox</h4>
                 <p>Moodbox is a collaborative communication tool for editors, developers, designers, managers, CEO’s  and team members in general.
@@ -76,7 +76,7 @@
 
             <div class="item">
                 <div class="icon">
-                    <img src="<?php echo $this->basePath('img/icon-lightning.svg') ?>" height="99" width="90">
+                    <img src="img/icon-lightning.svg" height="99" width="90">
                 </div>
                 <h4>Quick moodboards. No muss, no fuss!</h4>
                 <p>It’s so easy, so you can focus on what’s important: drag & drop your inspiration, export to PDF, share your moodboard</p>
@@ -84,7 +84,7 @@
 
             <div class="item">
                 <div class="icon">
-                    <img src="<?php echo $this->basePath('img/icon-donut.svg') ?>" height="99" width="90">
+                    <img src="img/icon-donut.svg" height="99" width="90">
                 </div>
                 <h4>Share with your team</h4>
                 <p>We skipped the registration so you can invite your colleagues to collaborate by sharing a simple link. </p>
@@ -92,7 +92,7 @@
 
             <div class="item">
                 <div class="icon">
-                    <img src="<?php echo $this->basePath('img/icon-forest.svg') ?>" height="99" width="90">
+                    <img src="img/icon-forest.svg" height="99" width="90">
                 </div>
                 <h4>Start collecting your inspiration</h4>
                 <p>We’ll let you discover other sweet goods that make your team’s experience efficient and productive!</p>
@@ -102,13 +102,21 @@
         <div class="shade right-shade"></div>
         <span class="skip">Skip</span>
         <a class="nav-box left carousel-control visible" href="#myCarousel" role="button" data-slide="prev">
-            <img src="<?php echo $this->basePath('img/arrow.svg') ?>" height="13" width="13">
+            <img src="img/arrow.svg" height="13" width="13">
         </a>
         <a class="nav-box right carousel-control visible" href="#myCarousel" role="button" data-slide="next">
-            <img src="<?php echo $this->basePath('img/arrow.svg') ?>" height="13" width="13">
+            <img src="img/arrow.svg" height="13" width="13">
         </a>
+        <button id="sub-button" style="position: absolute;bottom: 50px;left: 50%; transform:translateX(-50%);" class="btn btn-secondary visible invisible">Create a Moodboard</button>
     </div>
 </div>
+
+<!-- jQuery -->
+<!-- Bootstrap Core JavaScript -->
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jribbble.min.js"></script>
 
 <script>
     $.jribbble.setToken('bcc3bb8588af38656f3477d0eeacced71103cad996174db5317b067e378d93f0');
@@ -146,6 +154,9 @@
                 $this.children('.left.carousel-control').addClass('invisible');
             } else if($('.carousel-inner .item:last').hasClass('active')) {
                 $this.children('.right.carousel-control').addClass('invisible');
+                $('#sub-button').removeClass('invisible');
+                $('.carousel-indicators').addClass('invisible');
+                $('.skip').addClass('invisible');
             }
 
         });
