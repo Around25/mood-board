@@ -13,6 +13,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\Session\Container;
+use Application\File\Upload;
 
 class IndexController extends AbstractActionController
 {
@@ -82,36 +83,49 @@ class IndexController extends AbstractActionController
         $boardService = $this->getService('Application\Service\BoardService');
         $container = new Container('board');
         $board = $boardService->getById($container->boardId);
+        $result['succes'] = false;
         if(empty($board)) {
-            return new JsonModel(array(
-                'url' => 'board/' . $this->getBoardNewName(),
-                'success' => false,
-            ));
+            $result['url'] = 'board/' . $this->getBoardNewName();
+            return new JsonModel($result);
         }
         if (empty($name)) {
-            return new JsonModel(array(
-                'url' => 'board/'.$container->board->getName(),
-                'success' => false,
-            ));
+            $result['url'] = 'board/' . $container->board->getName();
+            return new JsonModel($result);
         }
         try {
             $userService = $this->getService('Application\Service\userService');
             $user = $userService->create($name);
             $userService->setUserSBoard($user, $board);
             $container->userId = $user->getId();
-            return new JsonModel(array(
-                'success' => true,
-            ));
+            $result['succes'] = true;
+            return new JsonModel($result);
+            
         } catch (\Exception $e) {
-            return new JsonModel(array(
-                'err' => $e->getMessage(),
-                'success' => false,
-            ));
+            $result['error'] = $e->getMessage();
+            return new JsonModel($result);
         }
+    }
+    
+    public function uploadAction() {
+        $file = $this->getRequest()->getFiles('file');
+        $result = array();
         
-        
-        
-        
+        $extensions = 'jpg,jpeg,gif,png';
+
+        $upload = new Upload(array(
+            'extensions' => $extensions,
+            'path' => 'uploads/',
+            'destination' => PUBLIC_PATH.'/'
+        ));
+        try {
+            $path = $upload->process($file);
+            $result['success'] = true;
+            $result['path'] = $path;
+        } catch (\Exception $e) {
+            $result['success'] = false;
+            $result['message'] = $e->getMessage();
+        }
+        return new JsonModel($result);
     }
 
     /**

@@ -32,6 +32,16 @@ return array(
                     ),
                 ),
             ),
+            'upload' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/upload[/:file]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'upload',
+                    ),
+                ),
+            ),
             'board' => array(
                 'type'    => 'Segment',
                 'options' => array(
