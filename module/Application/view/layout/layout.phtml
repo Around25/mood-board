@@ -53,20 +53,6 @@
 </head>
 
 <body id="page-top">
-<div class="upload-overlay">
-    <i class="close-icon fa fa-times"></i>
-    <form action="/upload" class="dropzone">
-        <div class="box">
-            <div class="upload-content">
-                <i class="fa fa-4x fa-cloud-upload"></i>
-                <h3>Drop your inspiration here</h3>
-                <span>OR</span>
-                <button class="btn btn-secondary">Browse files</button>
-                <span>Accepted formats .jpg, .gif, .png</span>
-            </div>
-        </div>
-    </form>
-</div>
 
 
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -341,7 +327,8 @@
         }
     });
     
-    $('#send-name').click(function() {
+    $('#send-name').click(function(e) {
+        e.preventDefault();
         var name = $('input[name="fname"]').val();
         $.ajax({
             url: '/set-user/' + name,
@@ -367,6 +354,10 @@
                 }
             }
         });
+    })
+    
+    $('.browse-files').click(function(e) {
+        e.preventDefault();
     })
 </script>
 

@@ -17,8 +17,21 @@
         </div>
     </div>
 </div>
+<div class="upload-overlay">
+    <i class="close-icon fa fa-times"></i>
+    <form action="/upload" class="dropzone" style="height: 100%">
+        <div id="dropzonePreview" class="dz-default dz-message box">
+            <div class="upload-content">
+                <i class="fa fa-4x fa-cloud-upload"></i>
+                <h3>Drop your inspiration here</h3>
+                <span>OR</span>
+                <button class="btn btn-secondary browse-files">Browse files</button>
+                <span>Accepted formats .jpg, .gif, .png</span>
+            </div>
+        </div>
+    </form>
+</div>
 <section>
-    <form action="/upload" class="dropzone"></form>
     <div class="row masonry-container container-fluid">
         <div class="col-md-3 col-sm-6 item">
             <div class="thumbnail">
