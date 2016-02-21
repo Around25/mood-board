@@ -156,4 +156,12 @@ class IndexController extends AbstractActionController
     {
         return substr(md5(rand(1000, 9999999)), 0, 20);
     }
+
+    public function landingAction()
+    {
+        $result = new ViewModel();
+        $result->setTerminal(true);
+
+        return $result;
+    }
 }

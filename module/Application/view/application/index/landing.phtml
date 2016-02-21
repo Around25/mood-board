@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <title>Moodboard.io</title>
+
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+        ->prependStylesheet($this->basePath('css/creative.css'))
+        ->prependStylesheet($this->basePath('css/font-awesome-animation.min.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))?>
+
+    <!-- Scripts -->
+
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath('js/creative.js'))
+        ->prependFile($this->basePath('js/classie.js'))
+        ->prependFile($this->basePath('js/cbpAnimatedHeader.js'))
+        ->prependFile($this->basePath('js/jquery.easing.min.js'))
+        ->prependFile($this->basePath('js/jquery.fittext.js'))
+        ->prependFile($this->basePath('js/jribbble.min.js'))
+        ->prependFile($this->basePath('js/wow.min.js'))
+        ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath('js/bootstrap.min.js'))
+        ->prependFile($this->basePath('js/jquery.min.js'))
+
+    ; ?>
+
+    <!-- Custom Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://use.typekit.net/sco8loq.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</head>
+
+<body class="landing">
+<ul class="shots"></ul>
+<div class="overlay"></div>
+<div class="demo-box box carousel slide" id="myCarousel" data-ride="carousel" data-interval="false" >
+    <div class="onboarding">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="icon">
+                    <img src="img/icon-logo.svg" height="99" width="90">
+                </div>
+                <h4>Welcome to Moodbox</h4>
+                <p>Moodbox is a collaborative communication tool for editors, developers, designers, managers, CEO’s  and team members in general.
+                </p>
+            </div>
+
+            <div class="item">
+                <div class="icon">
+                    <img src="img/icon-lightning.svg" height="99" width="90">
+                </div>
+                <h4>Quick moodboards. No muss, no fuss!</h4>
+                <p>It’s so easy, so you can focus on what’s important: drag & drop your inspiration, export to PDF, share your moodboard</p>
+            </div>
+
+            <div class="item">
+                <div class="icon">
+                    <img src="img/icon-donut.svg" height="99" width="90">
+                </div>
+                <h4>Share with your team</h4>
+                <p>We skipped the registration so you can invite your colleagues to collaborate by sharing a simple link. </p>
+            </div>
+
+            <div class="item">
+                <div class="icon">
+                    <img src="img/icon-forest.svg" height="99" width="90">
+                </div>
+                <h4>Start collecting your inspiration</h4>
+                <p>We’ll let you discover other sweet goods that make your team’s experience efficient and productive!</p>
+            </div>
+        </div>
+        <div class="shade left-shade"></div>
+        <div class="shade right-shade"></div>
+        <span class="skip">Skip</span>
+        <a class="nav-box left carousel-control visible" href="#myCarousel" role="button" data-slide="prev">
+            <img src="img/arrow.svg" height="13" width="13">
+        </a>
+        <a class="nav-box right carousel-control visible" href="#myCarousel" role="button" data-slide="next">
+            <img src="img/arrow.svg" height="13" width="13">
+        </a>
+        <button id="sub-button" style="position: absolute;bottom: 50px;left: 50%; transform:translateX(-50%);" class="btn btn-secondary visible invisible">Create a Moodboard</button>
+    </div>
+</div>
+
+<!-- jQuery -->
+<!-- Bootstrap Core JavaScript -->
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jribbble.min.js"></script>
+
+<script>
+    $.jribbble.setToken('bcc3bb8588af38656f3477d0eeacced71103cad996174db5317b067e378d93f0');
+
+    $.jribbble.shots('debuts', {
+        'per_page': 35,
+        'timeframe': 'year',
+        'sort': 'views'
+    }).then(function(res) {
+        var html = [];
+        res.forEach(function(shot) {
+            html.push('<li class="shots--shot">');
+            html.push('<a href="' + shot.html_url + '" target="_blank">');
+            html.push('<img src="' + shot.images.normal + '">');
+            html.push('</a></li>');
+        });
+
+        $('.shots').html(html.join(''));
+    });
+
+    $(document).ready(function() {
+
+        $('#myCarousel').carousel({
+            wrap: false
+        });
+
+        $('#myCarousel').find('.left.carousel-control').addClass('invisible');
+
+        $('#myCarousel').on('slid.bs.carousel', '', function() {
+            var $this = $(this).find('.onboarding');
+
+            $this.children('.carousel-control').removeClass('invisible');
+
+            if($('.carousel-inner .item:first').hasClass('active')) {
+                $this.children('.left.carousel-control').addClass('invisible');
+            } else if($('.carousel-inner .item:last').hasClass('active')) {
+                $this.children('.right.carousel-control').addClass('invisible');
+                $('#sub-button').removeClass('invisible');
+                $('.carousel-indicators').addClass('invisible');
+                $('.skip').addClass('invisible');
+            }
+
+        });
+
+    });
+
+</script>
+</body>
+</html>
