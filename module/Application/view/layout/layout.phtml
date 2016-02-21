@@ -79,7 +79,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Moodbox.io</a>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <img src="<?php echo $this->basePath('img/moodbox-logo.svg')?>" width="160" height="38" style="margin-top: -5px"/>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -126,8 +128,7 @@
                     <input type="checkbox" name="toggle" id="toggle" onchange="valueChanged()">
                     <label for="toggle"></label>
                     <div class="copy-link" id="copy-link">
-                        <p>Share your URL with your co-workers and start
-                            collecting inspiration together.</p>
+                        <p>Share this link with your team mates and start collecting inspiration together</p>
                         <input type="text" id="copyTarget" value="">
                         <button id="copyButton" class="btn btn-primary">Copy</button>
                     </div>
