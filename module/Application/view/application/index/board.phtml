@@ -33,6 +33,33 @@
 </div>
 <section>
     <div class="row masonry-container container-fluid">
+        <?php
+        $users = $this->users;
+        if (!empty($users)){
+            foreach ($users as $user){
+                $userImages = $user->getImages();
+                if (!empty($userImages)) {
+                    foreach ($userImages as $image) {
+                        ?>
+                        <div class="col-md-3 col-sm-6 item">
+                            <div class="thumbnail">
+                                <div class="close-icon">
+                                    <i class="fa fa-trash"></i>
+                                </div>
+                                <img src="<?php echo '/'.$image->getName();?>" alt="">
+                                <div class="overlay"></div>
+                                <button class="like-button">
+                                    <i class="fa fa-thumbs-up"></i>
+                                </button>
+                                <span class="likes">5 likes</span>
+                            </div>
+                        </div><!--/.item  -->
+                        <?php
+                    }
+                }
+            }
+        }
+        ?>
         <div class="col-md-3 col-sm-6 item">
             <div class="thumbnail">
                 <div class="close-icon">

@@ -76,7 +76,8 @@ class IndexController extends AbstractActionController
         }
         
         return new ViewModel(array(
-            'showLogin' => $showLogin
+            'showLogin' => $showLogin,
+            'users' => $board->getUsers()
         ));
     }
     
