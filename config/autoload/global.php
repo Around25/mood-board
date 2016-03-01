@@ -17,9 +17,9 @@ return array(
             'orm_default' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array(
-                    'host'     => 'http://169.53.158.25/',
-                    'port'     => '3306',
-                    'user'     => 'root',
+                    'host'     => '127.0.0.1',
+                    'port'     => '8889',
+                    'user'     => 'mbuser',
                     'password' => 'secr3t',
                     'dbname'   => 'moodboard',
                 )

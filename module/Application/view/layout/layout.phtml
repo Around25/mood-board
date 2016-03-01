@@ -14,14 +14,31 @@
     <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                         ->prependStylesheet($this->basePath('css/creative.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+                        ->prependStylesheet($this->basePath('css/font-awesome-animation.min.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))?>
 
+    <!-- Scripts -->
 
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery.min.js'))
+            ->prependFile($this->basePath('js/creative.js'))
+            ->prependFile($this->basePath('js/classie.js'))
+            ->prependFile($this->basePath('js/cbpAnimatedHeader.js'))
+            ->prependFile($this->basePath('js/jquery.easing.min.js'))
+            ->prependFile($this->basePath('js/jquery.fittext.js'))
+            ->prependFile($this->basePath('js/jribbble.min.js'))
+            ->prependFile($this->basePath('js/wow.min.js'))
+            ->prependFile($this->basePath('js/dropzone.js'))
+            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
+          
+        ; ?>
+ 
     <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,88 +53,326 @@
 </head>
 
 <body id="page-top">
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid primary">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Moodbox.io</a>
-            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-refresh text-primary"></i>
-                            <p>Refresh</p>
-                        </a>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="toggle" id="toggle">
-                        <label for="toggle"></label>
-                        <a><p>Collaborate</p></a>
-                    </li>
-                    <li>
-                        <button href="#" class="btn btn-primary btn-xl">Export PDF</button>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid primary">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <img src="<?php echo $this->basePath('img/moodbox-logo.svg')?>" width="160" height="38" style="margin-top: -5px"/>
+            </a>
         </div>
-        <div class="container-fluid team">
-            <p>Participants</p>
-            <ul class="nav navbar-nav navbar-left">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#page-top" class="btn btn-round btn-primary btn-xl page-scroll">Me</a>
+                    <button href="#" class="btn btn-primary btn-xl" id="new-name">Export PDF</button>
                 </li>
                 <li>
-                    <a href="#stefan" class="btn btn-round btn-primary btn-xl page-scroll">Stefan</a>
+                    <button href="#" class="btn btn-primary btn-xl btn-dotted" id="new-upload">
+                        <i class="fa fa-cloud-upload"></i>
+                        Upload files
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <div class="container-fluid team">
+        <p>Participants</p>
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <a href="#page-top" class="btn btn-round btn-primary btn-xl page-scroll">Me</a>
+            </li>
+            <li>
+                <a href="#stefan" class="btn btn-round btn-primary btn-xl page-scroll">Stefan</a>
+            </li>
+            <li>
+                <a href="" class="btn btn-round btn-primary btn-xl">Dani</a>
+            </li>
+        </ul>
+        <div class="pull-right">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="faa-parent animated-hover">
+                        <p>Refresh</p>
+                        <i class="fa fa-undo text-primary faa-spin"></i>
+                        <div class="bubble"></div>
+                    </a>
                 </li>
                 <li>
-                    <a href="" class="btn btn-round btn-primary btn-xl">Dani</a>
+                    <a><p id="hoverable-copy">Collaborate</p></a>
+                    <input type="checkbox" name="toggle" id="toggle" onchange="valueChanged()">
+                    <label for="toggle"></label>
+                    <div class="copy-link" id="copy-link">
+                        <p>Share this link with your team mates and start collecting inspiration together</p>
+                        <input type="text" id="copyTarget" value="">
+                        <button id="copyButton" class="btn btn-primary">Copy</button>
+                    </div>
                 </li>
             </ul>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
+    </div>
+    <!-- /.container-fluid -->
+</nav>
     
     <?php echo $this->content; ?>
-    
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
+<!-- Plugin JavaScript -->
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.fittext.js"></script>
+<script src="js/wow.min.js"></script>
 
-    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
-    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="js/creative.js"></script>
+<script src="js/jribbble.min.js"></script>
 
-    <script>
-        var $container = $('.masonry-container');
-        $container.imagesLoaded( function () {
-            $container.masonry({
-                columnWidth: '.item',
-                itemSelector: '.item'
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+
+<script>
+
+    $(window).ready(function() {
+        var url = window.location.href;
+        $('#copyTarget').val(url);
+    });
+
+    var $container = $('.masonry-container');
+    $container.imagesLoaded( function () {
+        $container.masonry({
+            columnWidth: '.item',
+            itemSelector: '.item'
+        });
+    });
+
+    //        $.jribbble.setToken('bcc3bb8588af38656f3477d0eeacced71103cad996174db5317b067e378d93f0');
+    //
+    //        $.jribbble.shots('debuts', {
+    //            'per_page': 10,
+    //            'timeframe': 'month'
+    //        }).then(function(res) {
+    //            var html = [];
+    //            res.forEach(function(shot) {
+    //                html.push('<div class="col-md-3 col-sm-6 item">');
+    //                html.push('<div class="thumbnail">');
+    //                html.push('<div class="close-icon">');
+    //                html.push('<i class="fa fa-trash"></i></div>');
+    //                html.push('<img src="' + shot.images.normal + '">');
+    //                html.push('<div class="overlay"></div>');
+    //                html.push('<button class="like-button">');
+    //                html.push('<i class="fa fa-thumbs-up"></i>');
+    //                html.push('</button><span class="likes">');
+    //                html.push(shot.likes_count + ' likes</span></div></div>');
+    //            });
+    //
+    //            $('#test-masonry').html(html.join(''));
+    //
+    //        });
+
+    $('.like-button').click(function () {
+        $(this).toggleClass("active");
+    });
+
+    document.getElementById("copyButton").addEventListener("click", function() {
+        copyToClipboard(document.getElementById("copyTarget"));
+        $(this).html('Done');
+        $(this).addClass('copied');
+        $(this).click(function() {
+            $("#copy-link").removeClass('visible');
+        });
+
+    });
+
+    function copyToClipboard(elem) {
+        // create hidden text element, if it doesn't already exist
+        var targetId = "_hiddenCopyText_";
+        var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+        var origSelectionStart, origSelectionEnd;
+        if (isInput) {
+            // can just use the original source element for the selection and copy
+            target = elem;
+            origSelectionStart = elem.selectionStart;
+            origSelectionEnd = elem.selectionEnd;
+        } else {
+            // must use a temporary form element for the selection and copy
+            target = document.getElementById(targetId);
+            if (!target) {
+                var target = document.createElement("textarea");
+                var target = document.createElement("textarea");
+                target.style.position = "absolute";
+                target.style.left = "-9999px";
+                target.style.top = "0";
+                target.id = targetId;
+                document.body.appendChild(target);
+            }
+            target.textContent = elem.textContent;
+        }
+        // select the content
+        var currentFocus = document.activeElement;
+        target.focus();
+        target.setSelectionRange(0, target.value.length);
+
+        // copy the selection
+        var succeed;
+        try {
+            succeed = document.execCommand("copy");
+        } catch(e) {
+            succeed = false;
+        }
+        // restore original focus
+        if (currentFocus && typeof currentFocus.focus === "function") {
+            currentFocus.focus();
+        }
+
+        if (isInput) {
+            // restore prior selection
+            elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+        } else {
+            // clear temporary content
+            target.textContent = "";
+        }
+        return succeed;
+    }
+
+    function valueChanged()
+    {
+        if($('#toggle').is(":checked")) {
+            $("#copy-link").addClass('visible');
+            $('#hoverable-copy').hover(
+                function(){
+                    $("#copy-link").addClass('visible');
+                },
+
+                function(){
+                    $("#copy-link").removeClass('visible');
+                });
+
+        }
+        else {
+            $('#hoverable-copy').hover(
+                function(){
+                    $("#copy-link").removeClass('visible');
+                },
+
+                function(){
+                    $("#copy-link").removeClass('visible');
+                });
+
+            $("#copy-link").removeClass('visible');
+        }
+    }
+
+    function valueChanged2()
+    {
+        if($('#toggle2').is(":checked")) {
+            $('.item').removeClass('col-md-3').addClass('col-md-2');
+            $container.imagesLoaded(function () {
+                $container.masonry({
+                    columnWidth: '.item',
+                    itemSelector: '.item'
+                });
             });
+        }
+
+        else {
+            $('.item').removeClass('col-md-2').addClass('col-md-3');
+            $container.imagesLoaded(function () {
+                $container.masonry({
+                    columnWidth: '.item',
+                    itemSelector: '.item'
+                });
+            });
+        }
+    }
+
+    $('#new-upload').click(function() {
+        $('.upload-overlay').addClass('show');
+    });
+
+    $('.close-icon').click(function() {
+        $('.upload-overlay').removeClass('show');
+    });
+
+    $('#new-name').click(function() {
+        $('.name-overlay').addClass('show');
+    });
+
+    $('.close-icon').click(function() {
+        $('.name-overlay').removeClass('show');
+    });
+
+    $(".comment-area").on('keyup blur change', function () {
+        if($(this).val().trim()=="")
+        {
+            $('.add-comment-button').addClass('hidden');
+        }
+        else
+        {
+            $('.add-comment-button').removeClass('hidden');
+        }
+    });
+    
+    //prevent default on enter keyup
+    $("input[name='fname']").keyup(function (e) {
+        e.preventDefault();
+        if (e.keyCode == 13) {
+            setUser($(this).val());
+        }
+    });
+    
+    $('#send-name').click(function(e) {
+        e.preventDefault();
+        setUser($('input[name="fname"]').val());
+    })
+    
+    $('.like-button').click(function() {
+        var imageId = $(this).attr('image-id');
+        $.ajax({
+            url: '/like/' + imageId,
+            success: function (data) {
+                if (data.success) {
+                    $('.name-overlay').removeClass('show');
+                } else {
+//                    window.location.replace(data.url);
+                }
+            }
         });
-        $('.like-button').click(function () {
-            $(this).toggleClass("active");
+    })
+    
+    $('.browse-files').click(function(e) {
+        e.preventDefault();
+    })
+    
+    function setUser(name) {
+        $.ajax({
+            url: '/set-user/' + name,
+            success: function (data) {
+                if (data.success) {
+                    $('.name-overlay').removeClass('show');
+                } else {
+//                    window.location.replace(data.url);
+                }
+            }
         });
-    </script>
+    }
+</script>
+
+
 
 </body>
 

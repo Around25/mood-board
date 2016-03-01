@@ -15,25 +15,51 @@ return array(
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/home',
+                    'route'    => '/',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
                     ),
                 ),
             ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
-            'application' => array(
-                'type'    => 'Literal',
+            'landing' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/landing',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'landing',
+                    ),
+                ),
+            ),
+            'set-user' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/set-user[/:name]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'set-user',
+                    ),
+                ),
+            ),
+            'upload' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/upload[/:file]',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'upload',
+                    ),
+                ),
+            ),
+            'board' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/board[/:name]',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
-                        'action'        => 'index',
+                        'action'        => 'board',
                     ),
                 ),
                 'may_terminate' => true,
@@ -62,6 +88,11 @@ return array(
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
         ),
+        'invokables' => array(
+            'Application\Service\BoardService' => 'Application\Service\BoardService',
+            'Application\Service\UserService' => 'Application\Service\UserService',
+            'Application\Service\ImageService' => 'Application\Service\ImageService'
+        )
     ),
     'translator' => array(
         'locale' => 'en_US',
@@ -93,6 +124,9 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+        'strategies' => array(
+            'ViewJsonStrategy',
+        ),
     ),
     // Placeholder for console routes
     'console' => array(
@@ -104,15 +138,15 @@ return array(
     'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+                'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
+                'cache' => 'filesystem',
+                'paths' => array('data/DoctrineORMModule/yml')
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                    __NAMESPACE__ . '\Db\Entity' => __NAMESPACE__ . '_driver'
                 )
-            )
+            ),
         )
     )
 );

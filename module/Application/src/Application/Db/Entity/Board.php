@@ -1,28 +1,21 @@
 <?php
-/**
- *  @Entity @Table(name="board")
- **/
+namespace Application\Db\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Board
 {
-
-    /**
-     * @var integer $id
-     * @Id @Column(type="integer")
-     * @GeneratedValue(strategy="AUTO")
-     */
+    
     private $id;
-
-    /** @Column(type="string") */
+    
     private $name;
 
-    /**
-     * @OneToMany(targetEntity="User", mappedBy="board")
-     **/
     private $users;
 
     public function __construct()
     {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new ArrayCollection();
     }
     
     /**
@@ -34,7 +27,7 @@ class Board
     }
     public function getUsers()
     {
-        return $this->access_token;
+        return $this->users;
     }
     
     public function setName($name)

@@ -11,21 +11,160 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
+use Zend\Session\Container;
+use Application\File\Upload;
 
 class IndexController extends AbstractActionController
 {
-    protected $em;
-
-    public function getEntityManager()
+    /**
+     * get parameter
+     *
+     * @param string $paramName
+     * @return mixed
+     */
+    public function getParameter($paramName)
     {
-        if (null === $this->em) {
-            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-        }
-        return $this->em;
+        return $this->getEvent()->getRouteMatch()->getParam($paramName);
     }
 
+    /**
+     * @param string $service
+     * @return object service
+     */
+    public function getService($service)
+    {
+        return $this->getServiceLocator()->get($service);
+    }
+    
     public function indexAction()
     {
         return new ViewModel();
+    }
+    
+    public function boardAction()
+    {
+        $name = $this->getParameter('name');
+        if (empty($name)){
+            return $this->redirect()->toRoute('board', array('name' => $this->getBoardNewName()));
+        }
+        $boardService = $this->getService('Application\Service\BoardService');
+        $userService = $this->getService('Application\Service\UserService');
+        
+        //get board
+        
+        $board = $boardService->getByName($name);
+        if(empty($board)){
+            $board = $boardService->create($name);
+        }
+        
+        //set board in session container
+        $container = new Container('board');
+
+        
+        if(empty($container->boardId) || ($container->boardId !== $board->getId())){
+            $container->boardId = $board->getId();
+        }
+        
+        //get user form container
+        $user = empty($container->boardId) ? null : $userService->getById($container->userId);
+        $showLogin = false;
+        if (empty($user)){
+            $showLogin = true;
+        } else if (!$boardService->checkUserOnBoard($board, $user)) {
+            //add user on board
+        }
+        
+        return new ViewModel(array(
+            'showLogin' => $showLogin,
+            'users' => $board->getUsers()
+        ));
+    }
+    
+    public function setUserAction()
+    {
+        $name = $this->getParameter('name');
+        $boardService = $this->getService('Application\Service\BoardService');
+        $container = new Container('board');
+        $board = $boardService->getById($container->boardId);
+        $result['success'] = false;
+        if(empty($board)) {
+            $result['url'] = 'board/' . $this->getBoardNewName();
+            return new JsonModel($result);
+        }
+        if (empty($name)) {
+            $result['url'] = 'board/' . $board->getName();
+            return new JsonModel($result);
+        }
+        try {
+            $userService = $this->getService('Application\Service\userService');
+            $user = $userService->create($name);
+            $userService->setUserSBoard($user, $board);
+            $container->userId = $user->getId();
+            $result['success'] = true;
+            return new JsonModel($result);
+            
+        } catch (\Exception $e) {
+            $result['error'] = $e->getMessage();
+            return new JsonModel($result);
+        }
+    }
+    
+    public function uploadAction() {
+
+        $container = new Container('board');
+        if(empty($container->boardId)) {
+            $result['url'] = 'board/' . $this->getBoardNewName();
+            return new JsonModel($result);
+        }
+        $result['success'] = false;
+        if (empty($container->userId)) {
+            $result['url'] = 'board/' . $container->board->getName();
+            return new JsonModel($result);
+        }
+        
+        $file = $this->getRequest()->getFiles('file');
+        $result = array();
+        
+        $extensions = 'jpg,jpeg,gif,png';
+
+        $upload = new Upload(array(
+            'extensions' => $extensions,
+            'path' => 'uploads/',
+            'destination' => PUBLIC_PATH.'/'
+        ));
+        try {
+            $path = $upload->process($file);
+            
+            $imageService = $this->getService('Application\Service\ImageService');
+            $userService = $this->getService('Application\Service\UserService');
+            $image = $imageService->create($path);
+            $user = $userService->getById($container->userId);
+            $imageService->addImageSUser($image, $user);
+            
+            $result['success'] = true;
+            $result['path'] = $path;
+        } catch (\Exception $e) {
+            $result['message'] = $e->getMessage();
+        }
+        return new JsonModel($result);
+    }
+
+    /**
+     * generate md5 random name
+     * 
+     * @return string
+     */
+    private function getBoardNewName()
+    {
+        return substr(md5(rand(1000, 9999999)), 0, 20);
+    }
+
+    public function landingAction()
+    {
+        $result = new ViewModel();
+        $result->setTerminal(true);
+
+        return $result;
     }
 }

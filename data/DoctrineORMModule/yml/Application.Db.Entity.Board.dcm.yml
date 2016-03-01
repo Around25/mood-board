@@ -1,0 +1,27 @@
+Application\Db\Entity\Board:
+    type: entity
+    table: board
+    repositoryClass: Application\Db\Model\Board
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+        
+    oneToMany:
+        users:
+            targetEntity: Application\Db\Entity\User
+            mappedBy: board
+            cascade: [remove, persist]
+            orderBy:
+              name: ASC
+
+    lifecycleCallbacks: {  }

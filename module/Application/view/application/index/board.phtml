@@ -1,0 +1,378 @@
+<div class="name-overlay <?php if ($this->showLogin) { echo 'show'; } ?>">
+    <i class="close-icon fa fa-times"></i>
+    <div class="box">
+        <div class="upload-content">
+            <h3>What is your name?</h3>
+            <span>Let your collaborators know who you are</span>
+            <form action="/set-user">
+                <input type="text" name="fname" placeholder="The Oscar goes to..." autofocus="true" style="   font-size: 110px;
+    /* padding: 100px 400px; */
+    background-color: transparent;
+    height: 200px;
+    font-weight: 600;
+    width: 1200px;
+    color: white;">
+            </form>
+            <button class="btn btn-secondary" id="send-name">OK! Let's go</button>
+        </div>
+    </div>
+</div>
+<div class="upload-overlay">
+    <i class="close-icon fa fa-times"></i>
+    <form action="/upload" class="dropzone" style="height: 100%">
+        <div id="dropzonePreview" class="dz-default dz-message box">
+            <div class="upload-content">
+                <i class="fa fa-4x fa-cloud-upload"></i>
+                <h3>Drop your inspiration here</h3>
+                <span>OR</span>
+                <button class="btn btn-secondary browse-files">Browse files</button>
+                <span>Accepted formats .jpg, .gif, .png</span>
+            </div>
+        </div>
+    </form>
+</div>
+<section>
+    <div class="row masonry-container container-fluid">
+        <?php
+        $users = $this->users;
+        if (!empty($users)){
+            foreach ($users as $user){
+                $userImages = $user->getImages();
+                if (!empty($userImages)) {
+                    foreach ($userImages as $image) {
+                        ?>
+                        <div class="col-md-3 col-sm-6 item">
+                            <div class="thumbnail">
+                                <div class="close-icon">
+                                    <i class="fa fa-trash"></i>
+                                </div>
+                                <img src="<?php echo '/'.$image->getName();?>" alt="">
+                                <div class="overlay"></div>
+                                <button class="like-button">
+                                    <i class="fa fa-thumbs-up"></i>
+                                </button>
+                                <span class="likes">5 likes</span>
+                            </div>
+                        </div><!--/.item  -->
+                        <?php
+                    }
+                }
+            }
+        }
+        ?>
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <img src="http://lorempixel.com/900/600/" alt="">
+                <div class="overlay"></div>
+                <button class="like-button" image-id="4">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">5 likes</span>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/600/900/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">5 likes</span>
+            </div>
+            <div class="new-comment">
+                <textarea class="comment-area" rows="4" placeholder="Add a comment..."></textarea>
+                <button class="btn btn-primary add-comment-button hidden">Add comment</button>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/800/600/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">12 likes</span>
+            </div>
+            <div class="caption comment">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/600/600/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">12 likes</span>
+            </div>
+            <div class="caption comment">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/1000/800/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">12 likes</span>
+            </div>
+            <div class="caption comment">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <img src="http://lorempixel.com/800/900/" alt="">
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">5 likes</span>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/500/900/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">12 likes</span>
+            </div>
+            <div class="caption comment">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/700/700/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">5 likes</span>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/1000/500/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">12 likes</span>
+            </div>
+            <div class="caption comment">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/600/1200/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">12 likes</span>
+            </div>
+            <div class="caption comment">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/800/400/" alt="">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">12 likes</span>
+            </div>
+            <div class="caption comment">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium.</p>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <div class="close-icon">
+                    <i class="fa fa-trash"></i>
+                </div>
+                <img src="http://lorempixel.com/600/900/" alt="">
+                <div class="overlay"></div>
+                <button class="like-button">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <span class="likes">5 likes</span>
+            </div>
+        </div><!--/.item  -->
+    </div>
+    <div class="container-fluid user-feed" id="stefan">
+        <p>Stefan</p>
+        <span>5 items</span>
+    </div>
+    <div class="row masonry-container">
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div><!--/.item  -->
+
+        <div class="col-md-3 col-sm-6 item">
+            <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                    <h3>Thumbnail label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, illum voluptates consectetur consequatur ducimus. Necessitatibus, nobis consequatur hic eaque laborum laudantium. Adipisci, explicabo, asperiores molestias deleniti unde dolore enim quas.</p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

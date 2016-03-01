@@ -1,0 +1,33 @@
+Application\Db\Entity\Like:
+    type: entity
+    table: like
+    repositoryClass: Application\Db\Model\User
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        image:
+            targetEntity: Application\Db\Entity\Image
+            cascade: {  }
+            mappedBy: null
+            inversedBy: likes
+            joinColumns:
+                board_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        user:
+            targetEntity: Application\Db\Entity\User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: likes
+            joinColumns:
+                board_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+
+    lifecycleCallbacks: {  }

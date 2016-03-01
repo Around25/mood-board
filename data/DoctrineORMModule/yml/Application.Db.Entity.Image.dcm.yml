@@ -1,0 +1,35 @@
+Application\Db\Entity\Image:
+    type: entity
+    table: image
+    repositoryClass: Application\Db\Model\Image
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+        
+    manyToOne:
+        user:
+            targetEntity: Application\Db\Entity\User
+            cascade: {  }
+            mappedBy: null
+            inversedBy: images
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        likes:
+            targetEntity: Application\Db\Entity\Like
+            mappedBy: image
+            cascade: [remove, persist]
+            orderBy:
+                id: ASC
